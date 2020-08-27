@@ -9,47 +9,11 @@ import sqlite3
 
 
 DATABASE_LOCATION = "sqlite:///my_played_tracks.sqlite"
-<<<<<<< HEAD
-USER_ID = ""
-TOKEN = ""
-
-# Generate your token here:  https://developer.spotify.com/console/get-recently-played/
-# Note: You need a Spotify account (can be easily created for free)
-
-def check_if_valid_data(df: pd.DataFrame) -> bool:
-    # Check if dataframe is empty
-    if df.empty:
-        print("No songs downloaded. Finishing execution")
-        return False
-
-    # Primary Key Check
-    if pd.Series(df['played_at']).is_unique:
-        pass
-    else:
-        raise Exception("Primary Key Check is violated")
-
-    # Check for nulls
-    if df.isnull().values.any():
-        raise Exception("Null valued found")
-
-    # Check that all timestamps are of yesterday's date
-    yesterday = datetime.datetime.now() - datetime.timedelta(days=1)
-    yesterday = yesterday.replace(hour=0, minute=0, second=0, microsecond=0)
-
-    timestamps = df["timestamp"].tolist()
-    for timestamp in timestamps:
-        if datetime.datetime.strptime(timestamp, "%Y-%m-%d") != yesterday:
-            raise Exception("At least one of the returned songs does not come from within the last 24 hours")
-
-    return True
-
-=======
 USER_ID = "" # your Spotify username 
 TOKEN = "" # your Spotify API token
 
 # Generate your token here:  https://developer.spotify.com/console/get-recently-played/
 # Note: You need a Spotify account (can be easily created for free)
->>>>>>> 146d1baa0e46e7630c210f5591d90d023b756135
 
 if __name__ == "__main__":
 
