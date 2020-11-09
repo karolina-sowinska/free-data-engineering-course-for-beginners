@@ -8,10 +8,6 @@ import datetime
 import sqlite3
 
 
-DATABASE_LOCATION = "sqlite:///my_played_tracks.sqlite"
-USER_ID = "" # your Spotify username 
-TOKEN = "" # your Spotify API token
-
 # Generate your token here:  https://developer.spotify.com/console/get-recently-played/
 # Note: You need a Spotify account (can be easily created for free)
 
@@ -42,9 +38,13 @@ def check_if_valid_data(df: pd.DataFrame) -> bool:
 
     return True
 
-if __name__ == "__main__":
 
-    # Extract part of the ETL process
+def run_spotify_etl():
+    DATABASE_LOCATION = "sqlite:///my_played_tracks.sqlite"
+    USER_ID = ''
+    TOKEN = ''
+
+      # Extract part of the ETL process
  
     headers = {
         "Accept" : "application/json",
@@ -114,19 +114,3 @@ if __name__ == "__main__":
 
     conn.close()
     print("Close database successfully")
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # Job scheduling 
-    # ...
